@@ -158,20 +158,12 @@
 		E0DF14851FD699B400DD2ED8 /* FlickrImageViewer */ = {
 			isa = PBXGroup;
 			children = (
-				E0DF14861FD699B400DD2ED8 /* AppDelegate.swift */,
-				E0DF148A1FD699B500DD2ED8 /* Main.storyboard */,
-				E0DF148D1FD699B500DD2ED8 /* Assets.xcassets */,
-				E0DF148F1FD699B500DD2ED8 /* LaunchScreen.storyboard */,
 				E0DF14921FD699B500DD2ED8 /* Info.plist */,
-				E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */,
-				E000BB821FD7E4BB00807E16 /* Models.swift */,
-				E000BB861FD7F3C800807E16 /* GridCollectionViewCell.swift */,
-				E000BB871FD7F3C800807E16 /* GridCollectionViewCell.xib */,
-				E000BB8E1FD7F4BA00807E16 /* CommonUtils.swift */,
-				E000BB921FD80BEA00807E16 /* UIImageView+Extension.swift */,
-				E0881DE11FD94EFB005ED857 /* ImageDetailViewController.swift */,
-				E0F6E7501FDD4E0F0009E307 /* CommentTableViewCell.swift */,
-				E0F6E7511FDD4E0F0009E307 /* CommentTableViewCell.xib */,
+				E0EAE16F1FDE82F6001580BC /* Suppporting Files */,
+				E0EAE16B1FDE82B6001580BC /* ViewControllers */,
+				E0EAE16D1FDE82D2001580BC /* Models */,
+				E0EAE16C1FDE82CA001580BC /* Views */,
+				E0EAE16E1FDE82E4001580BC /* Utilities */,
 			);
 			path = FlickrImageViewer;
 			sourceTree = "<group>";
@@ -192,6 +184,54 @@
 				E0DF14A81FD699B500DD2ED8 /* Info.plist */,
 			);
 			path = FlickrImageViewerUITests;
+			sourceTree = "<group>";
+		};
+		E0EAE16B1FDE82B6001580BC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */,
+				E0881DE11FD94EFB005ED857 /* ImageDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E0EAE16C1FDE82CA001580BC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E000BB861FD7F3C800807E16 /* GridCollectionViewCell.swift */,
+				E000BB871FD7F3C800807E16 /* GridCollectionViewCell.xib */,
+				E0F6E7501FDD4E0F0009E307 /* CommentTableViewCell.swift */,
+				E0F6E7511FDD4E0F0009E307 /* CommentTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E0EAE16D1FDE82D2001580BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E000BB821FD7E4BB00807E16 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E0EAE16E1FDE82E4001580BC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E000BB8E1FD7F4BA00807E16 /* CommonUtils.swift */,
+				E000BB921FD80BEA00807E16 /* UIImageView+Extension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E0EAE16F1FDE82F6001580BC /* Suppporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E0DF14861FD699B400DD2ED8 /* AppDelegate.swift */,
+				E0DF148A1FD699B500DD2ED8 /* Main.storyboard */,
+				E0DF148D1FD699B500DD2ED8 /* Assets.xcassets */,
+				E0DF148F1FD699B500DD2ED8 /* LaunchScreen.storyboard */,
+			);
+			path = "Suppporting Files";
 			sourceTree = "<group>";
 		};
 		F9E6A88B934C05F223230C4A /* Pods */ = {

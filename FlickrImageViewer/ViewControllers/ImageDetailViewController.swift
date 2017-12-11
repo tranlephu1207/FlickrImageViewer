@@ -84,8 +84,6 @@ class ImageDetailViewController: UIViewController {
     
     fileprivate func callCommentsAPI() {
         let urlString = String(format: "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&photo_id=%@&method=flickr.photos.comments.getlist&nojsoncallback=1", arguments: [self.photoObj.id])
-//        let urlString = "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&photo_id=2280737269&method=flickr.photos.comments.getlist&nojsoncallback=1"
-
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
@@ -103,7 +101,6 @@ class ImageDetailViewController: UIViewController {
                                     self.commentObjs.append(commentObj)
                                 }
                                 DispatchQueue.main.async {
-//                                     self.tblView.reloadData()
                                     if self.commentObjs.isEmpty {
                                         self.noCommentLbl.isHidden = false
                                        self.tblView.isHidden = true
@@ -171,7 +168,8 @@ extension ImageDetailViewController : UITableViewDelegate, UITableViewDataSource
                 DispatchQueue.global().async {
                     let builderOptions = [DTDefaultFontFamily:"Helvetica", NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html,
                                           NSAttributedString.DocumentAttributeKey.characterEncoding: String.Encoding.utf8, DTDefaultFontSize: 13] as [AnyHashable : Any]
-                    let data = commentObj.content.data(using: String.Encoding.utf8, allowLossyConversion: true)!
+                    let dataStr = commentObj.content.replacingOccurrences(of: "\n", with: "<br/>")
+                    let data = dataStr.data(using: String.Encoding.utf8, allowLossyConversion: true)!
                     let stringbuilder = DTHTMLAttributedStringBuilder(html: data, options: builderOptions, documentAttributes: nil)
                     let attrStr = stringbuilder?.generatedAttributedString()
                     DispatchQueue.main.async {
