@@ -18,7 +18,7 @@ class CommentTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        self.selectionStyle = .none
         avatarImgView.contentMode = .scaleAspectFit
         avatarImgView.clipsToBounds = true
         avatarImgView.layer.cornerRadius = (UIScreen.main.bounds.size.width * 0.1)/2

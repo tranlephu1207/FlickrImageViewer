@@ -11,6 +11,8 @@ import DTCoreText
 
 class ImageDetailViewController: UIViewController {
 
+    @IBAction func exitBtn(_ sender: Any) {
+    }
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var tblView: UITableView!
@@ -27,6 +29,8 @@ class ImageDetailViewController: UIViewController {
     var attrContent:[Int:NSAttributedString] = [:]
     var commentObjs:[CommentModel] = []
     
+    var image:UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,11 +43,15 @@ class ImageDetailViewController: UIViewController {
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageDetailViewController.imageViewDidTapped(sender:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGesture)
+        
         userNameLbl.text = "Comments"
         if photoObj != nil {
 
-            imageView.downloadImage(url: URL(string: photoObj.returnImageURL())!, callback: { (aImage) in
-                
+            imageView.downloadImage(url: URL(string: photoObj.returnImageURL())!, callback: { [weak self] (aImage) in
+                self?.image = aImage
             })
             self.callUsernameAPI()
             self.callCommentsAPI()
@@ -53,6 +61,15 @@ class ImageDetailViewController: UIViewController {
         self.noCommentLbl.font = UIFont(name: "Helvetica", size: 17)
         self.noCommentLbl.text = "NO COMMENT"
         self.noCommentLbl.isHidden = true
+    }
+    
+    @objc fileprivate func imageViewDidTapped(sender:Any) {
+        if image != nil {
+            let VC = storyboard?.instantiateViewController(withIdentifier: "ImageVC") as! ImageViewController
+            VC.image = self.image
+            VC.modalTransitionStyle = .crossDissolve
+            self.navigationController?.present(VC, animated: true, completion: nil)
+        }
     }
     
     fileprivate func callUsernameAPI() {

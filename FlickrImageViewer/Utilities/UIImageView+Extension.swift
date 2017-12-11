@@ -17,6 +17,7 @@ public extension UIImageView {
             if error != nil {
                 callback(nil)
             }
+            callback(aImage)
         }
     }
 }
