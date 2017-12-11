@@ -14,6 +14,7 @@ class ImageDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var noCommentLbl: UILabel!
     
     var photoObj:ImageModel!
     var usernameString:String = "" {
@@ -47,6 +48,11 @@ class ImageDetailViewController: UIViewController {
             self.callUsernameAPI()
             self.callCommentsAPI()
         }
+        
+        self.noCommentLbl.textAlignment = .center
+        self.noCommentLbl.font = UIFont(name: "Helvetica", size: 17)
+        self.noCommentLbl.text = "NO COMMENT"
+        self.noCommentLbl.isHidden = true
     }
     
     fileprivate func callUsernameAPI() {
@@ -77,8 +83,8 @@ class ImageDetailViewController: UIViewController {
     }
     
     fileprivate func callCommentsAPI() {
-//        let urlString = String(format: "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&photo_id=%@&method=flickr.photos.comments.getlist&nojsoncallback=1", arguments: [self.photoObj.id])
-        let urlString = "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&photo_id=2280737269&method=flickr.photos.comments.getlist&nojsoncallback=1"
+        let urlString = String(format: "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&photo_id=%@&method=flickr.photos.comments.getlist&nojsoncallback=1", arguments: [self.photoObj.id])
+//        let urlString = "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&photo_id=2280737269&method=flickr.photos.comments.getlist&nojsoncallback=1"
 
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
@@ -97,7 +103,18 @@ class ImageDetailViewController: UIViewController {
                                     self.commentObjs.append(commentObj)
                                 }
                                 DispatchQueue.main.async {
-                                     self.tblView.reloadData()
+//                                     self.tblView.reloadData()
+                                    if self.commentObjs.isEmpty {
+                                        self.noCommentLbl.isHidden = false
+                                       self.tblView.isHidden = true
+                                    } else {
+                                        self.tblView.reloadData()
+                                    }
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.tblView.isHidden = true
+                                    self.noCommentLbl.isHidden = false
                                 }
                             }
                         }

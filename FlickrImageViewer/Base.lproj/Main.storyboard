@@ -88,6 +88,15 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjE-YA-Neh">
                                 <rect key="frame" x="7" y="258" width="361" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="M4X-R8-pNf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psh-la-AWH">
+                                <rect key="frame" x="0.0" y="287" width="375" height="380"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -99,13 +108,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Psh-la-AWH" firstAttribute="top" secondItem="pjE-YA-Neh" secondAttribute="bottom" constant="8" id="4Zf-pu-OAs"/>
+                            <constraint firstItem="Psh-la-AWH" firstAttribute="leading" secondItem="DOH-Yh-Ruf" secondAttribute="leading" id="7Id-SR-cyf"/>
                             <constraint firstItem="0mY-HF-BDq" firstAttribute="bottom" secondItem="DOH-Yh-Ruf" secondAttribute="bottom" id="7h5-ab-xMw"/>
                             <constraint firstItem="pjE-YA-Neh" firstAttribute="leading" secondItem="DOH-Yh-Ruf" secondAttribute="leading" constant="7" id="8Ho-f7-gEc"/>
                             <constraint firstItem="JJG-mW-pke" firstAttribute="top" secondItem="DEZ-61-Bto" secondAttribute="top" id="8og-5R-LWe"/>
                             <constraint firstItem="DOH-Yh-Ruf" firstAttribute="trailing" secondItem="pjE-YA-Neh" secondAttribute="trailing" constant="7" id="9vL-Nt-BGh"/>
+                            <constraint firstItem="DOH-Yh-Ruf" firstAttribute="trailing" secondItem="Psh-la-AWH" secondAttribute="trailing" id="C4h-mH-4cv"/>
                             <constraint firstItem="0mY-HF-BDq" firstAttribute="top" secondItem="pjE-YA-Neh" secondAttribute="bottom" constant="8" id="FCb-GI-qgv"/>
                             <constraint firstItem="JJG-mW-pke" firstAttribute="leading" secondItem="DOH-Yh-Ruf" secondAttribute="leading" id="Rbn-eY-v56"/>
                             <constraint firstItem="0mY-HF-BDq" firstAttribute="leading" secondItem="DOH-Yh-Ruf" secondAttribute="leading" id="mqV-2z-RQ1"/>
+                            <constraint firstItem="DOH-Yh-Ruf" firstAttribute="bottom" secondItem="Psh-la-AWH" secondAttribute="bottom" id="riV-ls-keb"/>
                             <constraint firstItem="JJG-mW-pke" firstAttribute="trailing" secondItem="DOH-Yh-Ruf" secondAttribute="trailing" id="s9a-oh-4Tw"/>
                             <constraint firstItem="pjE-YA-Neh" firstAttribute="top" secondItem="JJG-mW-pke" secondAttribute="bottom" constant="8" id="utc-FN-vre"/>
                             <constraint firstItem="0mY-HF-BDq" firstAttribute="trailing" secondItem="DOH-Yh-Ruf" secondAttribute="trailing" id="xQT-gK-02Y"/>
@@ -115,6 +128,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="imageView" destination="JJG-mW-pke" id="0gw-XZ-OVd"/>
+                        <outlet property="noCommentLbl" destination="Psh-la-AWH" id="63F-Lf-7u8"/>
                         <outlet property="tblView" destination="0mY-HF-BDq" id="Bhb-de-N9u"/>
                         <outlet property="userNameLbl" destination="pjE-YA-Neh" id="hvP-IK-eXr"/>
                     </connections>

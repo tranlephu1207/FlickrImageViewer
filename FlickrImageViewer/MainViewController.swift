@@ -238,7 +238,8 @@ class MainViewController: UIViewController {
     }
     
     func callAPI() {
-        let urlString = String(format: "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&per_page=25&page=%d&method=flickr.photos.getrecent&nojsoncallback=1", arguments: [self.currentPage])
+//        let urlString = String(format: "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&per_page=25&page=%d&method=flickr.photos.getrecent&nojsoncallback=1", arguments: [self.currentPage])
+        let urlString = String(format: "https://api.flickr.com/services/rest/?api_key=9e74634ccde37b17af042f0aa48a886d&format=json&per_page=25&page=%d&method=flickr.interestingness.getlist&nojsoncallback=1", arguments: [self.currentPage])
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"

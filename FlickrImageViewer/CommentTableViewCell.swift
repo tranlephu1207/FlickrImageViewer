@@ -21,6 +21,12 @@ class CommentTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate
         
         avatarImgView.contentMode = .scaleAspectFit
         avatarImgView.clipsToBounds = true
+        avatarImgView.layer.cornerRadius = (UIScreen.main.bounds.size.width * 0.1)/2
+        avatarImgView.layer.borderColor = UIColor.lightGray.cgColor
+        avatarImgView.layer.borderWidth = 0.5
+        avatarImgView.backgroundColor = UIColor.black
+        avatarImgView.sd_setShowActivityIndicatorView(true)
+        avatarImgView.sd_setIndicatorStyle(.white)
         
         userNameLbl.textColor = UIColor.blue
         userNameLbl.numberOfLines = 0
@@ -34,6 +40,10 @@ class CommentTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate
         // Configure the view for the selected state
     }
     
+    @objc fileprivate func linkButtonClicked(sender:DTLinkButton) {
+        UIApplication.shared.open(sender.url, options: [:], completionHandler: nil)
+    }
+    
     func attributedTextContentView(_ attributedTextContentView: DTAttributedTextContentView!, viewFor attachment: DTTextAttachment!, frame: CGRect) -> UIView! {
         if attachment is DTImageTextAttachment {
             let imageView = DTLazyImageView(frame: frame)
@@ -44,6 +54,13 @@ class CommentTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate
             return imageView
         }
         return nil
+    }
+    
+    func attributedTextContentView(_ attributedTextContentView: DTAttributedTextContentView!, viewForLink url: URL!, identifier: String!, frame: CGRect) -> UIView! {
+        let linkButton = DTLinkButton(frame: frame)
+        linkButton.url = url
+        linkButton.addTarget(self, action: #selector(CommentTableViewCell.linkButtonClicked(sender:)), for: .touchUpInside)
+        return linkButton
     }
     
     func lazyImageView(_ lazyImageView: DTLazyImageView!, didChangeImageSize size: CGSize) {
