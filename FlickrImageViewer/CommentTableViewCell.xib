@@ -22,41 +22,39 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L3o-md-7Dx">
-                        <rect key="frame" x="0.0" y="5" width="32" height="32"/>
+                        <rect key="frame" x="5" y="5" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="L3o-md-7Dx" secondAttribute="height" multiplier="1:1" id="cXQ-mn-n3M"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrG-TP-xlb">
-                        <rect key="frame" x="40" y="5" width="280" height="21"/>
+                        <rect key="frame" x="45" y="5" width="270" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MD8-iV-405">
-                        <rect key="frame" x="40" y="31" width="280" height="80.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rx-ZW-rMr" customClass="DTAttributedTextContentView">
+                        <rect key="frame" x="45" y="30.5" width="270" height="81"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="jrG-TP-xlb" firstAttribute="leading" secondItem="L3o-md-7Dx" secondAttribute="trailing" constant="8" id="02y-QL-nnK"/>
-                    <constraint firstItem="MD8-iV-405" firstAttribute="top" secondItem="jrG-TP-xlb" secondAttribute="bottom" constant="5" id="1Xc-Ik-Gpg"/>
-                    <constraint firstAttribute="bottom" secondItem="MD8-iV-405" secondAttribute="bottom" constant="5" id="4ls-Kd-CM8"/>
                     <constraint firstItem="L3o-md-7Dx" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.1" id="H0s-O1-R2A"/>
-                    <constraint firstItem="MD8-iV-405" firstAttribute="leading" secondItem="jrG-TP-xlb" secondAttribute="leading" id="K2U-Zd-FtR"/>
-                    <constraint firstAttribute="trailing" secondItem="jrG-TP-xlb" secondAttribute="trailing" id="PjY-6T-XLc"/>
+                    <constraint firstItem="2Rx-ZW-rMr" firstAttribute="leading" secondItem="jrG-TP-xlb" secondAttribute="leading" id="Om5-UP-7MN"/>
+                    <constraint firstAttribute="trailing" secondItem="jrG-TP-xlb" secondAttribute="trailing" constant="5" id="PjY-6T-XLc"/>
                     <constraint firstItem="L3o-md-7Dx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="PzQ-X8-mK8"/>
-                    <constraint firstItem="L3o-md-7Dx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="g9U-1N-KS8"/>
+                    <constraint firstAttribute="trailing" secondItem="2Rx-ZW-rMr" secondAttribute="trailing" constant="5" id="cax-ha-1ZC"/>
+                    <constraint firstAttribute="bottom" secondItem="2Rx-ZW-rMr" secondAttribute="bottom" constant="5" id="cn0-Jx-We4"/>
+                    <constraint firstItem="L3o-md-7Dx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="g9U-1N-KS8"/>
                     <constraint firstItem="jrG-TP-xlb" firstAttribute="top" secondItem="L3o-md-7Dx" secondAttribute="top" id="gdd-52-Xxx"/>
-                    <constraint firstItem="MD8-iV-405" firstAttribute="trailing" secondItem="jrG-TP-xlb" secondAttribute="trailing" id="ncF-OA-uMi"/>
+                    <constraint firstItem="2Rx-ZW-rMr" firstAttribute="top" secondItem="jrG-TP-xlb" secondAttribute="bottom" constant="5" id="iRj-vV-Wue"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="avatarImgView" destination="L3o-md-7Dx" id="ljz-TQ-W9T"/>
-                <outlet property="commentLbl" destination="MD8-iV-405" id="3AN-QP-twb"/>
+                <outlet property="commentLbl" destination="2Rx-ZW-rMr" id="ekh-Ja-0Dc"/>
                 <outlet property="userNameLbl" destination="jrG-TP-xlb" id="31B-2I-2SV"/>
             </connections>
             <point key="canvasLocation" x="34" y="90.5"/>

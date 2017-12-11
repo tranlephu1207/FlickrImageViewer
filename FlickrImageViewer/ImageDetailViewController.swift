@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DTCoreText
 
 class ImageDetailViewController: UIViewController {
 
@@ -37,7 +38,7 @@ class ImageDetailViewController: UIViewController {
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        userNameLbl.text = "Is Loading"
+        userNameLbl.text = "Comments"
         if photoObj != nil {
 
             imageView.downloadImage(url: URL(string: photoObj.returnImageURL())!, callback: { (aImage) in
@@ -54,7 +55,6 @@ class ImageDetailViewController: UIViewController {
             var request = URLRequest(url: url)
             request.httpMethod = "GET"
             URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
-//                self.isSearching = false
                 if error != nil {
                     self.showAlertVC()
                 }
@@ -64,7 +64,7 @@ class ImageDetailViewController: UIViewController {
                         if let photosJSON = json["person"] as? Dictionary<String,Any> {
                             if let usernameJSON = photosJSON["username"] as? Dictionary<String,Any> {
                                 DispatchQueue.main.async {
-                                    self.usernameString = usernameJSON["_content"] as? String ?? ""
+                                    self.title = usernameJSON["_content"] as? String ?? ""
                                 }
                             }
                         }
@@ -111,7 +111,7 @@ class ImageDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tblView.estimatedRowHeight = 35
+//        tblView.estimatedRowHeight = 35
         tblView.rowHeight = UITableViewAutomaticDimension
         tblView.backgroundColor = UIColor.clear
         tblView.setNeedsLayout()
@@ -148,28 +148,26 @@ extension ImageDetailViewController : UITableViewDelegate, UITableViewDataSource
         if cell.tag == indexPath.row {
             let commentObj = self.commentObjs[indexPath.row]
             if let attrContent = self.attrContent[indexPath.row] {
-                cell.commentLbl.attributedText = attrContent
+                cell.commentLbl.attributedString = attrContent
+                cell.commentLbl.relayoutText()
             } else {
-//                let attrStr = try! NSAttributedString(
-//                    data: (commentObj.content.data(using: String.Encoding.unicode, allowLossyConversion: true)!),
-//                    options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
-//                    documentAttributes: nil)
-//                self.attrContent[indexPath.row] = attrStr
-//                cell.commentLbl.attributedText = attrStr
                 DispatchQueue.global().async {
-                    let attrStr = try! NSAttributedString(
-                        data: (commentObj.content.data(using: String.Encoding.unicode, allowLossyConversion: true)!),
-                        options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html, NSAttributedString.DocumentReadingOptionKey.characterEncoding: String.Encoding.utf8.rawValue],
-                        documentAttributes: nil)
+                    let builderOptions = [DTDefaultFontFamily:"Helvetica", NSAttributedString.DocumentAttributeKey.documentType: NSAttributedString.DocumentType.html,
+                                          NSAttributedString.DocumentAttributeKey.characterEncoding: String.Encoding.utf8, DTDefaultFontSize: 13] as [AnyHashable : Any]
+                    let data = commentObj.content.data(using: String.Encoding.utf8, allowLossyConversion: true)!
+                    let stringbuilder = DTHTMLAttributedStringBuilder(html: data, options: builderOptions, documentAttributes: nil)
+                    let attrStr = stringbuilder?.generatedAttributedString()
                     DispatchQueue.main.async {
                         if cell.tag == indexPath.row {
                             self.attrContent[indexPath.row] = attrStr
-                            cell.commentLbl.attributedText = attrStr
+                            cell.commentLbl.attributedString = attrStr
+                            cell.commentLbl.layouter = nil
+                            cell.commentLbl.relayoutText()
+                            tableView.reloadData()
                         }
                     }
                 }
             }
-//            cell.commentLbl.attributedText = attrStr
             cell.userNameLbl.text = commentObj.authorName
             if let url = URL(string: commentObj.returnImageURL()) {
                 cell.avatarImgView.downloadImage(url: url, callback: { (image) in

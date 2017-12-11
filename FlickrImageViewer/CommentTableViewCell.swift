@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import DTCoreText
 
-class CommentTableViewCell: UITableViewCell {
+class CommentTableViewCell: UITableViewCell, DTAttributedTextContentViewDelegate, DTLazyImageViewDelegate {
 
     @IBOutlet weak var avatarImgView: UIImageView!
     @IBOutlet weak var userNameLbl: UILabel!
-    @IBOutlet weak var commentLbl: UILabel!
-//    var textView:D
+    @IBOutlet weak var commentLbl: DTAttributedTextContentView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,21 +23,9 @@ class CommentTableViewCell: UITableViewCell {
         avatarImgView.clipsToBounds = true
         
         userNameLbl.textColor = UIColor.blue
-        commentLbl.numberOfLines = 0
-        commentLbl.lineBreakMode = .byCharWrapping
-        
-//        DispatchQueue.main.async {
-//            let attrStr = try! NSAttributedString(
-//                data: (self.tex.data(using: String.Encoding.unicode, allowLossyConversion: true)!)!,
-//                options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType],
-//                documentAttributes: nil)
-//            
-//            self.detailLabel.attributedText = attrStr
-//            self.detailLabel.textAlignment = NSTextAlignment.justified
-//            self.detailLabel.contentMode = .scaleToFill
-//            self.detailLabel.font = UIFont(name: "PTSans-Narrow", size: 18.0)
-//        }
-        
+        userNameLbl.numberOfLines = 0
+        commentLbl.delegate = self
+        commentLbl.shouldDrawImages = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -46,4 +34,32 @@ class CommentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func attributedTextContentView(_ attributedTextContentView: DTAttributedTextContentView!, viewFor attachment: DTTextAttachment!, frame: CGRect) -> UIView! {
+        if attachment is DTImageTextAttachment {
+            let imageView = DTLazyImageView(frame: frame)
+            imageView.delegate = self
+            //url for deferred loading
+            imageView.url = attachment.contentURL
+            imageView.shouldShowProgressiveDownload = true
+            return imageView
+        }
+        return nil
+    }
+    
+    func lazyImageView(_ lazyImageView: DTLazyImageView!, didChangeImageSize size: CGSize) {
+        let url = lazyImageView.url
+        let pred = NSPredicate(format: "contentURL == %@",url! as CVarArg)
+        
+        let array = self.commentLbl.layoutFrame.textAttachments(with: pred)
+        
+        for _ in (array?.enumerated())! {
+            let element = DTTextAttachment()
+            element.originalSize = size
+            element.displaySize = size
+        }
+        DispatchQueue.main.async {
+            self.commentLbl.layouter = nil
+            self.commentLbl.relayoutText()
+        }
+    }
 }
