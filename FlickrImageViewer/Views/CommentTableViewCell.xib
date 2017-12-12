@@ -22,7 +22,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L3o-md-7Dx">
-                        <rect key="frame" x="5" y="5" width="32" height="32"/>
+                        <rect key="frame" x="5" y="5" width="32" height="32.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="L3o-md-7Dx" secondAttribute="height" multiplier="1:1" id="cXQ-mn-n3M"/>
                         </constraints>
@@ -42,6 +42,7 @@
                     <constraint firstItem="jrG-TP-xlb" firstAttribute="leading" secondItem="L3o-md-7Dx" secondAttribute="trailing" constant="8" id="02y-QL-nnK"/>
                     <constraint firstItem="L3o-md-7Dx" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.1" id="H0s-O1-R2A"/>
                     <constraint firstItem="2Rx-ZW-rMr" firstAttribute="leading" secondItem="jrG-TP-xlb" secondAttribute="leading" id="Om5-UP-7MN"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="L3o-md-7Dx" secondAttribute="bottom" constant="5" id="PLi-cN-sen"/>
                     <constraint firstAttribute="trailing" secondItem="jrG-TP-xlb" secondAttribute="trailing" constant="5" id="PjY-6T-XLc"/>
                     <constraint firstItem="L3o-md-7Dx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="PzQ-X8-mK8"/>
                     <constraint firstAttribute="trailing" secondItem="2Rx-ZW-rMr" secondAttribute="trailing" constant="5" id="cax-ha-1ZC"/>
