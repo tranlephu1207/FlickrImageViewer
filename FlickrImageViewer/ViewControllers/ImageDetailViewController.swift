@@ -43,9 +43,6 @@ class ImageDetailViewController: UIViewController {
         
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ImageDetailViewController.imageViewDidTapped(sender:)))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGesture)
         
         userNameLbl.text = "Comments"
         if photoObj != nil {
@@ -61,15 +58,6 @@ class ImageDetailViewController: UIViewController {
         self.noCommentLbl.font = UIFont(name: "Helvetica", size: 17)
         self.noCommentLbl.text = "NO COMMENT"
         self.noCommentLbl.isHidden = true
-    }
-    
-    @objc fileprivate func imageViewDidTapped(sender:Any) {
-        if image != nil {
-            let VC = storyboard?.instantiateViewController(withIdentifier: "ImageVC") as! ImageViewController
-            VC.image = self.image
-            VC.modalTransitionStyle = .crossDissolve
-            self.navigationController?.present(VC, animated: true, completion: nil)
-        }
     }
     
     fileprivate func callUsernameAPI() {

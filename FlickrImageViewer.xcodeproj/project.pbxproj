@@ -37,9 +37,6 @@
 		E0DF14B51FD79E7F00DD2ED8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */; };
 		E0DF14B61FD79E7F00DD2ED8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */; };
 		E0DF14B71FD79E7F00DD2ED8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */; };
-		E0EAE1711FDE85B4001580BC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAE1701FDE85B4001580BC /* ImageViewController.swift */; };
-		E0EAE1721FDE85B4001580BC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAE1701FDE85B4001580BC /* ImageViewController.swift */; };
-		E0EAE1731FDE85B4001580BC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAE1701FDE85B4001580BC /* ImageViewController.swift */; };
 		E0F6E7521FDD4E0F0009E307 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6E7501FDD4E0F0009E307 /* CommentTableViewCell.swift */; };
 		E0F6E7531FDD4E0F0009E307 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6E7501FDD4E0F0009E307 /* CommentTableViewCell.swift */; };
 		E0F6E7541FDD4E0F0009E307 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6E7501FDD4E0F0009E307 /* CommentTableViewCell.swift */; };
@@ -93,7 +90,6 @@
 		E0DF14A61FD699B500DD2ED8 /* FlickrImageViewerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageViewerUITests.swift; sourceTree = "<group>"; };
 		E0DF14A81FD699B500DD2ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E0EAE1701FDE85B4001580BC /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		E0F6E7501FDD4E0F0009E307 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		E0F6E7511FDD4E0F0009E307 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		F443861BB341A68F1AA76DC5 /* Pods-FlickrImageViewerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickrImageViewerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickrImageViewerUITests/Pods-FlickrImageViewerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,7 +191,6 @@
 			children = (
 				E0DF14B41FD79E7F00DD2ED8 /* MainViewController.swift */,
 				E0881DE11FD94EFB005ED857 /* ImageDetailViewController.swift */,
-				E0EAE1701FDE85B4001580BC /* ImageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -540,7 +535,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E000BB931FD80BEA00807E16 /* UIImageView+Extension.swift in Sources */,
-				E0EAE1711FDE85B4001580BC /* ImageViewController.swift in Sources */,
 				E000BB881FD7F3C800807E16 /* GridCollectionViewCell.swift in Sources */,
 				E0881DE21FD94EFB005ED857 /* ImageDetailViewController.swift in Sources */,
 				E0F6E7521FDD4E0F0009E307 /* CommentTableViewCell.swift in Sources */,
@@ -556,7 +550,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E000BB941FD80BEA00807E16 /* UIImageView+Extension.swift in Sources */,
-				E0EAE1721FDE85B4001580BC /* ImageViewController.swift in Sources */,
 				E000BB891FD7F3C800807E16 /* GridCollectionViewCell.swift in Sources */,
 				E0881DE31FD94EFB005ED857 /* ImageDetailViewController.swift in Sources */,
 				E0F6E7531FDD4E0F0009E307 /* CommentTableViewCell.swift in Sources */,
@@ -572,7 +565,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E000BB951FD80BEA00807E16 /* UIImageView+Extension.swift in Sources */,
-				E0EAE1731FDE85B4001580BC /* ImageViewController.swift in Sources */,
 				E000BB8A1FD7F3C800807E16 /* GridCollectionViewCell.swift in Sources */,
 				E0881DE41FD94EFB005ED857 /* ImageDetailViewController.swift in Sources */,
 				E0F6E7541FDD4E0F0009E307 /* CommentTableViewCell.swift in Sources */,
